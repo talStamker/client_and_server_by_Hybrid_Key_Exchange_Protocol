@@ -121,7 +121,56 @@ Clases:
         repeat = input("Would you like to create another class? (yes/no): ").strip().lower()
         if repeat != 'yes':
             print("Exiting...")
-            break\
+            break
+# Q3
+## B
+### File:meta.py
+Write a program that accepts the name of a Python file containing a class (for example, the file py.fruit\
+Wish 2, only the first class in the file should be referred to), and a line of code in Python, adding to each\
+The methods in the class the code. Try the program on the line of code ("Hello(" print and run the\
+Department methods.
+#### Solution:
+    import ast
+
+- I Get the filename and the code to insert
+filename = input("Enter python file name: ")
+code_to_add = input("Enter a python code: ")
+
+- I Verify if the code is correct Python code
+try:
+    compiled_code = compile(code_to_add, '<string>', 'exec')
+except SyntaxError:
+    print("The code you entered is not valid Python code.")
+    exit(1)
+
+- I Read the existing content of the file
+with open(filename, 'r') as file:
+    content = file.read()
+
+- I Parse the file to find classes and methods
+class MethodInserter(ast.NodeTransformer):
+    def visit_FunctionDef(self, node):
+        # Insert the new code at the start of each method
+        new_node = ast.parse(code_to_add).body
+        node.body = new_node + node.body
+        return node
+
+- I Parse the content into an AST
+tree = ast.parse(content)
+
+- I Identify classes and insert the code into each method
+inserter = MethodInserter()
+new_tree = inserter.visit(tree)
+
+- I Convert the modified AST back to source code
+new_content = ast.unparse(new_tree)
+
+- I Write the updated content back to the file
+with open(filename, 'w') as file:
+    file.write(new_content)
+
+print("Code added to all methods in the class successfully.")
+
 
 
 
