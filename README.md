@@ -1,7 +1,7 @@
 # Q1
 ## A
 ### File:Q1_a.py
-Suppose you get a list of words a_list. For each word, you need to identify if it starts with the letter b.
+Suppose you get a list of words a_list. For each word, you need to identify if it starts with the letter b.\
 If so, the word should be changed so that it starts with an uppercase letter followed by lowercase letters, and
 Save the corrected words (and only them) in b_list.
 #### Solution:
@@ -94,7 +94,7 @@ Clases:
 - MechanicalEngineer
   - inherits from: Engineer.
   - Class variable: none (except Engineer).
-  - Constructor-Get name and build user with the type_engineer MechanicalEngineer.
+  - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
 main:
  while True:<!---
  if the user want set more classes
