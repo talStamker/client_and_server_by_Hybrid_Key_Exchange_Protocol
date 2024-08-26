@@ -1,6 +1,6 @@
 # Q1
-##A
-###File:Q1_a.py
+## A
+### File:Q1_a.py
 Suppose you get a list of words a_list. For each word, you need to identify if it starts with the letter b.
 If so, the word should be changed so that it starts with an uppercase letter followed by lowercase letters, and
 Save the corrected words (and only them) in b_list.
