@@ -97,15 +97,15 @@ Clases:
   - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
  ##### main:
      - if the user want set more classes
- while True: 
+     - while True: 
      - I Get the input from the user\
-        new_class_name = input("Please enter the name of the new class: ")\
-        base_class_name = input("Please enter the name of the base class (blank if none): ")\
-        method_name = input(f"Please enter the name of a new method for class {new_class_name}: ")\
-        attribute_name = input(f"Please enter the name of a new attribute for class {new_class_name}: ")\
+     -   -new_class_name = input("Please enter the name of the new class: ")\
+     -   base_class_name = input("Please enter the name of the base class (blank if none): ")\
+     -   method_name = input(f"Please enter the name of a new method for class {new_class_name}: ")\
+     -   attribute_name = input(f"Please enter the name of a new attribute for class {new_class_name}: ")\
      - I Define the base class for building the type of class\
-        if base_class_name:\
-            base_class = type(base_class_name, (object,), {})\
+     -   if base_class_name:\
+     -       base_class = type(base_class_name, (object,), {})\
         else:\
             base_class = object\
      - I Create a new class dynamically for what the user put\
