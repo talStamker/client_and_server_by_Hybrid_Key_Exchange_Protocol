@@ -130,7 +130,7 @@ Wish 2, only the first class in the file should be referred to), and a line of c
 The methods in the class the code. Try the program on the line of code ("Hello(" print and run the\
 Department methods.
 #### Solution:
-    import ast
+   - import ast
     
    - I Get the filename and the code to insert
      filename = input("Enter python file name: ")
@@ -158,16 +158,16 @@ Department methods.
    - I Parse the content into an AST
      tree = ast.parse(content)
 
-- I Identify classes and insert the code into each method
-inserter = MethodInserter()
-new_tree = inserter.visit(tree)
+   - I Identify classes and insert the code into each method
+     inserter = MethodInserter()
+     new_tree = inserter.visit(tree)
 
-- I Convert the modified AST back to source code
-new_content = ast.unparse(new_tree)
+   - I Convert the modified AST back to source code
+     new_content = ast.unparse(new_tree)
 
-- I Write the updated content back to the file
-with open(filename, 'w') as file:
-    file.write(new_content)
+   - I Write the updated content back to the file
+     with open(filename, 'w') as file:
+     file.write(new_content)
 
 print("Code added to all methods in the class successfully.")
 
