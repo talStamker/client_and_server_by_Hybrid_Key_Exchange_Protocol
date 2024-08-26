@@ -96,34 +96,28 @@ Clases:
   - Class variable: none (except Engineer).
   - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
 main:\
-<span style="color:red">if the user want set more classes </span>
+(if the user want set more classes)
  while True: 
-    <!---
-   I Get the input from the user
-    -->
+   (I Get the input from the user)
         new_class_name = input("Please enter the name of the new class: ")
         base_class_name = input("Please enter the name of the base class (blank if none): ")
         method_name = input(f"Please enter the name of a new method for class {new_class_name}: ")
         attribute_name = input(f"Please enter the name of a new attribute for class {new_class_name}: ")
-    <!---
-   I Define the base class for building the type of class    -->
+   (I Define the base class for building the type of class)
         if base_class_name:
             base_class = type(base_class_name, (object,), {})
         else:
             base_class = object
-    <!---
-    I Create a new class dynamically for what the user put   -->
+   ( I Create a new class dynamically for what the user put)
         new_class = type(new_class_name, (base_class,), {
             attribute_name: None,  # Define the new attribute
             method_name: lambda self: print(f"{method_name} called")  # Define the new method
         })
-     <!---
-     I Print the __name__ and __dict__ of the new class  -->  
+     (I Print the __name__ and __dict__ of the new class) 
         print(f"\nClass {new_class.__name__} created with base class: {base_class_name if base_class_name else 'None'}")
         print(f"Class __name__ is: {new_class.__name__}")
         print(f"Class __dict__ is: {new_class.__dict__}\n")
-     <!---
-     I Ask the user if they want to repeat or stop  -->  
+     (Ask the user if they want to repeat or stop)  
         repeat = input("Would you like to create another class? (yes/no): ").strip().lower()
         if repeat != 'yes':
             print("Exiting...")
