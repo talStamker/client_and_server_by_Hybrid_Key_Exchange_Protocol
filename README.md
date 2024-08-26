@@ -113,14 +113,14 @@ Clases:
             attribute_name: None,  # Define the new attribute
             method_name: lambda self: print(f"{method_name} called")  # Define the new method
         })
-     - I Print the __name__ and __dict__ of the new class\
-        print(f"\nClass {new_class.__name__} created with base class: {base_class_name if base_class_name else 'None'}")\
-        print(f"Class __name__ is: {new_class.__name__}")\
-        print(f"Class __dict__ is: {new_class.__dict__}\n")\
-     - Ask the user if they want to repeat or stop\  
-        repeat = input("Would you like to create another class? (yes/no): ").strip().lower()\
-        if repeat != 'yes':\
-            print("Exiting...")\
+     - I Print the __name__ and __dict__ of the new class
+        print(f"\nClass {new_class.__name__} created with base class: {base_class_name if base_class_name else 'None'}")
+        print(f"Class __name__ is: {new_class.__name__}")
+        print(f"Class __dict__ is: {new_class.__dict__}\n")
+     - I Ask the user if they want to repeat or stop
+        repeat = input("Would you like to create another class? (yes/no): ").strip().lower()
+        if repeat != 'yes':
+            print("Exiting...")
             break\
 
 
