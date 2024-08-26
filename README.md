@@ -95,7 +95,7 @@ Clases:
   - inherits from: Engineer.
   - Class variable: none (except Engineer).
   - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
-main:\
+ ##### main:
 - if the user want set more classes
  while True: 
      - I Get the input from the user
