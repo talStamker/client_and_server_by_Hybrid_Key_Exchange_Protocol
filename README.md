@@ -64,13 +64,13 @@ A variable with a random integer value, and a method that executes one print com
 from this department. Make sure that the parent class does exist.
 - After the class has been created, the content of the field and the dictionary must be printed: ,__name_.newClass
  .newClass.__dict__.
-  Solution:
-  Clases:
-  User
-  Class variable: name-string, profession-string
-  Constructor-Get name and profession, check they are not empty string, and build user.
-  Technician
-  inherits from: User
+Solution:
+Clases:
+- User
+  - Class variable: name-string, profession-string
+  - Constructor-Get name and profession, check they are not empty string, and build user.
+- Technician
+  - inherits from: User
     
 
 
