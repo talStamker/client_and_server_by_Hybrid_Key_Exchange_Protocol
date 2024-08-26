@@ -132,40 +132,40 @@ Department methods.
 #### Solution:
      import ast
     
-   - I Get the filename and the code to insert
+    I Get the filename and the code to insert
      filename = input("Enter python file name: ")
      code_to_add = input("Enter a python code: ")
 
-   - I Verify if the code is correct Python code
+    I Verify if the code is correct Python code
      try:
         compiled_code = compile(code_to_add, '<string>', 'exec')
      except SyntaxError:
         print("The code you entered is not valid Python code.")
         exit(1)
 
-   - I Read the existing content of the file
+    I Read the existing content of the file
      with open(filename, 'r') as file:
         content = file.read()
 
-   - I Parse the file to find classes and methods
+    I Parse the file to find classes and methods
      class MethodInserter(ast.NodeTransformer):
         def visit_FunctionDef(self, node):
-   - Insert the new code at the start of each method
+    I Insert the new code at the start of each method
             new_node = ast.parse(code_to_add).body
             node.body = new_node + node.body
             return node
 
-   - I Parse the content into an AST
+    I Parse the content into an AST
      tree = ast.parse(content)
 
-   - I Identify classes and insert the code into each method
+    I Identify classes and insert the code into each method
      inserter = MethodInserter()
      new_tree = inserter.visit(tree)
 
-   - I Convert the modified AST back to source code
+    I Convert the modified AST back to source code
      new_content = ast.unparse(new_tree)
 
-   - I Write the updated content back to the file
+    I Write the updated content back to the file
      with open(filename, 'w') as file:
          file.write(new_content)
 
