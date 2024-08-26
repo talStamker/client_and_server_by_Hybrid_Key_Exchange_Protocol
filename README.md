@@ -96,9 +96,9 @@ Clases:
   - Class variable: none (except Engineer).
   - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
 main:
- while True:<!---
+ while True: @@
  if the user want set more classes
---> 
+@@
     <!---
    I Get the input from the user
     -->
