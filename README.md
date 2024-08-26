@@ -97,22 +97,22 @@ Clases:
   - Constructor-Get name and build user with the type_engineer MechanicalEngineer.\
  ##### main:
      - if the user want set more classes
-     - while True: 
-     - I Get the input from the user\
-     -   -new_class_name = input("Please enter the name of the new class: ")\
-     -   base_class_name = input("Please enter the name of the base class (blank if none): ")\
-     -   method_name = input(f"Please enter the name of a new method for class {new_class_name}: ")\
-     -   attribute_name = input(f"Please enter the name of a new attribute for class {new_class_name}: ")\
-     - I Define the base class for building the type of class\
-     -   if base_class_name:\
-     -       base_class = type(base_class_name, (object,), {})\
-        else:\
-            base_class = object\
-     - I Create a new class dynamically for what the user put\
-        new_class = type(new_class_name, (base_class,), {\
-            attribute_name: None,  # Define the new attribute\
-            method_name: lambda self: print(f"{method_name} called")  # Define the new method\
-        })\
+      while True: 
+     - I Get the input from the user
+        -new_class_name = input("Please enter the name of the new class: ")
+        base_class_name = input("Please enter the name of the base class (blank if none): ")
+        method_name = input(f"Please enter the name of a new method for class {new_class_name}: ")
+        attribute_name = input(f"Please enter the name of a new attribute for class {new_class_name}: ")
+     - I Define the base class for building the type of class
+        if base_class_name:
+            base_class = type(base_class_name, (object,), {})
+        else:
+            base_class = object
+     - I Create a new class dynamically for what the user put
+        new_class = type(new_class_name, (base_class,), {
+            attribute_name: None,  # Define the new attribute
+            method_name: lambda self: print(f"{method_name} called")  # Define the new method
+        })
      - I Print the __name__ and __dict__ of the new class\
         print(f"\nClass {new_class.__name__} created with base class: {base_class_name if base_class_name else 'None'}")\
         print(f"Class __name__ is: {new_class.__name__}")\
