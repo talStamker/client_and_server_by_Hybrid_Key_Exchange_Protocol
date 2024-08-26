@@ -4,7 +4,7 @@
 Suppose you get a list of words a_list. For each word, you need to identify if it starts with the letter b.
 If so, the word should be changed so that it starts with an uppercase letter followed by lowercase letters, and
 Save the corrected words (and only them) in b_list.
-Solution:
+#### Solution:
 I set a_list to an example of input.
 b_list-I set to empty list.
 In for I check if the word is'nt empty for know if in word[0] there is something.
@@ -13,7 +13,7 @@ If the word is empty I do'nt need it and if not i want check if in word[0] there
 ### File:Q1_b.py
 Is it possible to build a single Python line that will perform a similar operation and produce the requested list
 list_b.
-Solution:
+#### Solution:
 I can write the code in a in one line.
 I set a_list to an example of input.
 Than, I write the line.
@@ -24,7 +24,7 @@ line = 'This line contains words and some of them have the letter o'
 Write a program that breaks the sentence into words, identify those that contain the letter o
 and move them completely to uppercase letters. The words must be written separated by commas
 and profit.
-Solution:
+#### Solution:
 line is like the example.
 words-the words in line set in list.
 upper_words is set to empty list.
@@ -37,7 +37,7 @@ Create a class named AppleBasket whose constructor accepts two external argument
 representing color, and a number representing quantity. The constructor needs to initialize two instance variables: color_apple
 and quantity_apple. Write a method called increase that increases the quantity in that instance by 1
 in each session. Also write a method called __str __
-Solution:
+#### Solution:
 Constructor- quantity can't be negative number and color can't be empty string, so i checked it
 function:
 increase-increases the quantity in that instance by 1.
@@ -46,7 +46,7 @@ __str__-for printing
 ### File:fruit.py
 Create an inheritance class called GreenAppleBasket for a basket of green apples, construct constructor
 For this class that invokes the base class constructor with a Green data color.
-Solution:
+#### Solution:
 GreenAppleBasket get quantity_apple and construct AppleBasket with it and Green color.
 # Q3
 ## A
@@ -64,7 +64,7 @@ A variable with a random integer value, and a method that executes one print com
 from this department. Make sure that the parent class does exist.
 - After the class has been created, the content of the field and the dictionary must be printed: ,__name_.newClass
  .newClass.__dict__.
-Solution:
+#### Solution:
 Clases:
 - User
   - Class variable: name-string, profession-string
