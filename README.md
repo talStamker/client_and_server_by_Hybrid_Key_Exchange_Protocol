@@ -54,7 +54,12 @@ https://github.com/weidai11/cryptopp
 ##### void clear(char* message, int length)- clear message
 ##### void createBufferHeader(char* buffer, uint16_t code, uint32_t payload_size, std::vector<uint8_t>& client_id, uint8_t version)- update buffer according to the elements of header that it get it update buffer that its begining will be this elements
 ##### void connect(TransferInfo& info,tcp::socket&s, tcp::resolver &resolver)- wrapper of function connect of boost
-
+### registrationRequest.cpp
+#### elements:
+##### RegistrationRequest inherit from Message and have the field name- the client want send request to server that have the name of user and the server need to write him in its database.
+##### RegistrationResponse inherit from ResponseHeader and have the field client_id_hex- the server response and send the id that he gave to the user.
+##### std::string handleServerResponse(const char* response, size_t length, TransferInfo& info, int& retry_count, boost::asio::ip::tcp::socket& s, const std::string& nameStr) - This function handle the response that the client can get to the registration request. code 1600 the registration succeeded and the server send id, in this function we open new file me.info  and the first line we write the name the second line we write the id. code 1601 the registration failed and this function try to send registration request more time untill it get 3 failures. if it get failure in the third time it print fatal error. This function out the id in hex number in string and if something get wrong it out empty string.
+##### std::string runRegistrationRequest(TransferInfo& info, int retry_count = 0)- This function send the registration request it update the header of the request to the correct value and send the name that in transfer.info that in info and send the request and handle the response by calling handleServerResponse. This function out the id in hex number in string and if something get wrong it out empty string.
 
 
 
