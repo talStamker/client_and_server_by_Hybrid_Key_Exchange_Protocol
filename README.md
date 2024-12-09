@@ -25,6 +25,8 @@ https://github.com/weidai11/cryptopp
 ##### You can change it but you will need to change it in server in server.py line: host: str = '127.0.0.1', and change the file port.info change it's context to new port.
 ##### Second line: the name of client as user in server.
 ##### Third line: The name of file that the client want send to server.
+### bytesCodeCasting.h 
+#### library that bytesCodeCasting.cpp relizes
 ### bytesCodeCasting.cpp
 ##### This file is handle with the converting of byte code in different forms.
 #### functions:
@@ -37,9 +39,23 @@ https://github.com/weidai11/cryptopp
 ##### void encodeStringInArrToByteCode(std::vector<uint8_t>& vec, const char* str, int stringSizeOnumberOfByte)- get vec,str that its context is byte code, stringSizeOnumberOfByte -length of byte code and enter to vec the byte code from str.
 ##### uint8_t hexCharToByte(char c)- This function convert a hex character to it's integer value
 ##### encodeHexStringToByteCode(std::vector<uint8_t>& vec, const std::string& hexStr, int byteSize) - This function encode a 32-character hex string to a 16-byte binary format.
-### bytesCodeCasting.h 
-#### library that bytesCodeCasting.cpp relizes
-## 
+### commonFunctions.h
+#### elements:
+##### TransferInfo- will be in use for the most of code it update its feilds by the file transfer.info and update in the handle of requests to server and responses from server.
+##### Message- all request to server have it's fields as header of the request.
+##### ResponseHeader- all response from server have it's fields as header of the request.
+##### EncryptedAESKeySendingResponse inherit from ResponseHeader - when the server response is AES key encrypted by public key of RSA he send client_id_hex,
+ cipher.
+##### About it's static functions i will explain when i will explain the files that realize it.
+### commonFunctions.cpp
+#### functions:
+##### void handlingHeaderResponse(const char* response,ResponseHeader& resHeader)-  get resHeader object and update it's fields acording to the response
+##### std::string loadClientId(const char* response)- return client id in hexnumber in string by read it from response
+##### void clear(char* message, int length)- clear message
+##### void createBufferHeader(char* buffer, uint16_t code, uint32_t payload_size, std::vector<uint8_t>& client_id, uint8_t version)- update buffer according to the elements of header that it get it update buffer that its begining will be this elements
+##### void connect(TransferInfo& info,tcp::socket&s, tcp::resolver &resolver)- wrapper of function connect of boost
+
+
 
 
 
