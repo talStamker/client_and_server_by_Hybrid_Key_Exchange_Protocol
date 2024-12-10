@@ -117,5 +117,9 @@ https://github.com/weidai11/cryptopp
 ### client.cpp
 #### functions:
 ##### main- this function manage the client send the client requests according to this scheme
-<img width="205" alt="image" src="https://github.com/user-attachments/assets/8db76ef0-e5bb-40ca-a488-032e39175f85">
+<img width="176" alt="image" src="https://github.com/user-attachments/assets/0f7eed58-bb50-4dc1-bcbd-b81feb70289c">
+##### and this scheme:
+<img width="205" alt="image" src="https://github.com/user-attachments/assets/8db76ef0-e5bb-40ca-a488-032e39175f85"> 
+
+
 
