@@ -6,7 +6,7 @@
 https://github.com/weidai11/cryptopp
 ### download boost library and connect it to vs
 ### run server.py and after run client.cpp
-## client
+## Client:
 #### I add to my client crypto wrapper This is the files:
 ##### 1. AESWrapper.cpp
 ##### 2. AESWrapper.h
@@ -119,5 +119,60 @@ https://github.com/weidai11/cryptopp
 ##### main- this function manage the client send the client requests according to this schemes
 <img width="176" alt="image" src="https://github.com/user-attachments/assets/0f7eed58-bb50-4dc1-bcbd-b81feb70289c">
 <img width="205" alt="image" src="https://github.com/user-attachments/assets/8db76ef0-e5bb-40ca-a488-032e39175f85"> 
+
+## Server:
+#### lets explain about the files of server:
+
+### database_manager.py
+##### This file handle the database of clients and files
+#### functions:
+##### def init_db() -> None:- This function init the table of clients and the table of files.
+##### def register_client(name: str) -> bytes:- This function allocate uuid to the name that it got and insert the in line in table clients
+##### def update_public_key(client_id: bytes, new_public_key: bytes) -> bool:- This function get public key and client_id and finde the line in table that it's id is client_id and update the public key of this line to what the function got.
+##### def get_client_info(name: str) -> Union[Tuple[bytes, bytes], None]:- This function get name and and return the id and  public key of this name.
+##### def get_id_by_name(name: str) -> bytes:- This function get name and return it's id
+##### def delete_client_by_name(name: str) -> bool:- This function get name and delete frome table clients the line that have this name.
+##### def update_AESkey(client_id: bytes, new_aes_key: bytes) -> bool:- This function update AES key to the line that have the id client_id in clients table.
+##### def get_AesKey_by_id(client_id: bytes) -> bytes:- This function get id client_id and return it's AES key
+##### def insert_file_record(id: bytes, fileName: str, pathName: str) -> None:- This function get id, fileName, pathName and insert them to line in table files.
+##### def verify_file_by_client_id(client_id: bytes) -> bool:- This function get client_id and update it's Verified to 1 in files table.
+
+### bytes_code_casting.py
+##### This file is handle with the converting of byte code in different forms.
+#### functions:
+##### def bytes_4_little_endian_to_big_endian(data):-This function get 4 bytes of number in little endian and return the number in big endian.
+##### def bytes_2_little_endian_to_big_endian(data):- This function get 2 bytes of number in little endian and return this number in big endian.
+##### def decode_string_using_UTF_8(data):- This function decode data to string.
+##### def ecode_string_using_UTF_8_And_remove_null_terminator(data):- This function encode the string data without null terminator.
+##### def get_hex(data):-This function get bytecode data convert him to hext number and return it in strig.
+##### def int_to_1_byte(data):- This function return an integer to a 1-byte binary representation
+##### def encode_to_unsigned_little_endian_2_bytes(data):- This function encode unsigned little endian in 2 bytes.
+##### def encode_to_unsigned_little_endian_4_bytes(data):- This function encode unsigned little endian in 4 bytes.
+##### def convert_int_to_4_bytes(data):-This function return an integer to a 4-byte big-endian binary representation
+
+### common_functions.py
+#### elements:
+##### Header have the fields: version, code, payload_size- all the response have this fields and inherit from this.
+#### functions:
+##### def create_header_response(version: int, code: int, payload_size: int) -> bytes:- This function create the header of all response from server
+##### def create_general_failed_response():- This function create general failed response that happend in server.
+##### def send_and_close(client_socket:socket.socket,response:bytes):- This function send to client the response and close the socket.
+
+### registration_response.py
+#### elements:
+##### RegistrationResponse inherit from Header and have the field client_id
+#### functions:
+##### def create_response(request: RegistrationResponse) -> bytes:- This function get the object and create the response in bytes.
+##### def run_registration_response(client_socket: socket.socket) -> None:- This function get the registration request from client and return send him the response to that.
+
+### encrypted_AES_key_response.py
+#### elements:
+##### EncryptedAESKeyResponse inherit from Header
+#### functions:
+##### def encrypt_aes_key_with_rsa(public_key_bytes: bytes, aes_key: bytes) -> bytes:- This function encrypt AES key with the public RSA key.
+##### def create_response(request: EncryptedAESKeyResponse) -> bytes:-  This function get the object and create the response in bytes.
+##### def run_aes_key_generating_response(client_socket: socket.socket) -> None:- This function get request sending public key and handle it create AES key and encrypt it with public key and send it to client.
+##### 
+
 
 
