@@ -172,7 +172,38 @@ https://github.com/weidai11/cryptopp
 ##### def encrypt_aes_key_with_rsa(public_key_bytes: bytes, aes_key: bytes) -> bytes:- This function encrypt AES key with the public RSA key.
 ##### def create_response(request: EncryptedAESKeyResponse) -> bytes:-  This function get the object and create the response in bytes.
 ##### def run_aes_key_generating_response(client_socket: socket.socket) -> None:- This function get request sending public key and handle it create AES key and encrypt it with public key and send it to client.
-##### 
+
+### reconnect_AEA_key_response.py
+#### elements:
+##### RequestDeniedResponse inherit from Header and has the field client_id.
+#### functions:
+##### def request_denied(request: RequestDeniedResponse) -> bytes:- This function return response in bytes of the object it get.
+##### def is_valid_rsa_public_key(binary_key: bytes) -> bool:- This function return true if the public key of RSA is valid and false if not.
+##### def rerun_aes_key_generating_response(client_socket: socket.socket, client_id: str) -> None:- This function get reconnect request check if the public key that it get valid. If yes create AES key and send to client the cipher of it by the public key and update the database. If not send to client request_denied
+
+### file_recived_correct_with_CRC.py
+#### elements:
+##### CorrectCRCResponse inherit from Header and has the fields: client_id, content_size, file_name, check_sum
+#### functions:
+##### def calculate_crc32(byte_data):- This function calculate the checksum of byte_data.
+##### def aes_decrypt(cipher_bytes, key):- This function decrypt cipher_bytes with the AES key by the decryption AES.
+##### def create_response(request: CorrectCRCResponse) -> bytes: This function get the object and return the response to sending file request in bytes.
+##### def handle_data(data,payload_size):- This function handle the data and divide it to number of variable.
+##### def get_complete_cipher(client_socket,complete_cipher,packet_number ,total_packets,file_name):- This function get the packets from client and return the cipher
+##### handle_file_sending_request(client_socket:socket.socket, client_id, payload_size):- This function handle file sending request and response the client the checksum
+
+### crc_respones.py
+#### elements:
+##### CRCResponse inherit from Header and has the fields: client_id
+#### functions:
+##### def create_response(request: CRCResponse) -> bytes:  This function get the object and return the response to CRC request in bytes.
+##### def run_crc_response(client_socket: socket.socket,code,client_id) -> None:- This function get the request from client if the client send the checksum correct it response accept response and change the database in the correct place Verify to 1.If the check sum not correct and the client send fatal error after it sent 3 times attempt, it return accept response.
+
+### server.py 
+#### functions:
+##### read_port() -> int:- This function read from port.info file the port and return it.
+##### def decode_client_id(data: bytes) -> str:- This function decode client id from data.
+##### def start_server(host: str, port: int) -> None:- This function handle the server response according to the code that it get from client  and call the correct function that handle this. This function wait for request from client and handle them.
 
 
 
